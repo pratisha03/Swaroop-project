@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Royal Feast Caterers & Events</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #c89b63;
+      --dark: #111827;
+      --dark-light: #1f2937;
+      --cream: #f8f5f0;
+      --white: #ffffff;
+      --text: #4b5563;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+      --transition: all 0.35s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-subtitle {
+      display: inline-block;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--dark);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .primary-btn {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    .page-header {
+      min-height: 60vh;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.72)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      position: relative;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .active-link {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      background: var(--primary);
+      padding: 10px 20px;
+      border-radius: 999px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    .page-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(60vh - 90px);
+      text-align: center;
+    }
+
+    .page-hero-content {
+      max-width: 820px;
+    }
+
+    .page-hero-content h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      margin-bottom: 18px;
+      line-height: 1.15;
+    }
+
+    .page-hero-content p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #f3f4f6;
+      font-size: 1.05rem;
+    }
+
+    /* Filter buttons */
+    .gallery-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 12px 22px;
+      border: 1px solid #e5e7eb;
+      background: var(--white);
+      color: var(--dark);
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    /* Gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      min-height: 320px;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(17, 24, 39, 0.82),
+        rgba(17, 24, 39, 0.2)
+      );
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay-content h3 {
+      color: var(--white);
+      margin-bottom: 6px;
+      font-size: 1.25rem;
+    }
+
+    .gallery-overlay-content p {
+      color: #e5e7eb;
+      font-size: 0.95rem;
+    }
+
+    /* Stats section */
+    .stats-section {
+      background: var(--cream);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 35px 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .stat-card p {
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, var(--dark), var(--dark-light));
+      color: var(--white);
+      text-align: center;
+      padding: 60px 30px;
+      border-radius: 24px;
+    }
+
+    .cta-box h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      color: #e5e7eb;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: #d1d5db;
+      padding-top: 70px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 35px;
+      padding-bottom: 40px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      color: var(--white);
+      margin-bottom: 15px;
+    }
+
+    .footer a {
+      color: #d1d5db;
+    }
+
+    .footer li {
+      margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      padding: 18px 0;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .lightbox.show {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 16px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2rem;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .gallery-grid,
+      .stats-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 260px;
+        background: rgba(17, 24, 39, 0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        border-radius: 16px;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .gallery-grid,
+      .stats-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        min-height: 52vh;
+      }
+
+      .page-hero {
+        min-height: calc(52vh - 90px);
+      }
+
+      .section-padding {
+        padding: 70px 0;
+      }
+
+      .gallery-item {
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero-content h1 {
+        font-size: 2.1rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <nav class="navbar container">
+      <div class="logo">Swaroop</div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="Services.html">Services</a></li>
+        <li><a href="Gallery.html" class="active-link">Gallery</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="Contact.html" class="nav-btn">Book Event</a></li>
+      </ul>
+    </nav>
+
+    <section class="page-hero container">
+      <div class="page-hero-content reveal active">
+        <span class="section-subtitle">Our Gallery</span>
+        <h1>Moments of Taste, Style & Celebration</h1>
+        <p>
+          Explore our event gallery featuring elegant buffet setups, premium catering,
+          wedding décor, private celebrations, and unforgettable guest experiences.
+        </p>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-subtitle">Event Showcase</span>
+          <h2 class="section-title">A Look at Our Beautiful Events</h2>
+        </div>
+
+        <div class="gallery-filters reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="wedding">Wedding</button>
+          <button class="filter-btn" data-filter="corporate">Corporate</button>
+          <button class="filter-btn" data-filter="buffet">Buffet</button>
+          <button class="filter-btn" data-filter="decor">Decoration</button>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item reveal" data-category="wedding">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80" alt="Wedding event" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Luxury Wedding Setup</h3>
+                <p>Elegant dining and wedding atmosphere</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="buffet">
+            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1000&q=80" alt="Buffet catering" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Premium Buffet Service</h3>
+                <p>Delicious presentation with style</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="corporate">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80" alt="Corporate event" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Corporate Event Catering</h3>
+                <p>Professional service for business events</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="decor">
+            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1000&q=80" alt="Event decoration" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Elegant Table Décor</h3>
+                <p>Beautiful decoration details</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="wedding">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80" alt="Wedding dining" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Wedding Dining Experience</h3>
+                <p>Stylish seating and joyful celebration</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="buffet">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=80" alt="Food catering" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Signature Food Display</h3>
+                <p>Fresh menu presentation for guests</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="decor">
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80" alt="Party decoration" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Celebration Styling</h3>
+                <p>Decor that elevates every event</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="corporate">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=80" alt="Business event" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Business Celebration</h3>
+                <p>Modern event setup for teams and guests</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal" data-category="buffet">
+            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1000&q=80" alt="Catering dishes" />
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-content">
+                <h3>Creative Menu Serving</h3>
+                <p>Fresh dishes made for memorable occasions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section section-padding">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card reveal">
+            <h3>500+</h3>
+            <p>Events Managed</p>
+          </div>
+          <div class="stat-card reveal">
+            <h3>50K+</h3>
+            <p>Guests Served</p>
+          </div>
+          <div class="stat-card reveal">
+            <h3>100+</h3>
+            <p>Wedding Celebrations</p>
+          </div>
+          <div class="stat-card reveal">
+            <h3>5★</h3>
+            <p>Client Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container cta-box reveal">
+        <h2>Ready to Make Your Event Look This Beautiful?</h2>
+        <p>
+          Let RoyalFeast handle your catering and event styling with elegance,
+          taste, and professional service from start to finish.
+        </p>
+        <a href="contact.html" class="btn primary-btn">Book Your Event</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>RoyalFeast</h3>
+        <p>
+          Premium catering and event services for weddings, parties, and
+          corporate gatherings.
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="About.html">About</a></li>
+          <li><a href="Services.html">Services</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>Email: info@royalfeast.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Location: Badlapur, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 RoyalFeast Caterers & Events. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img id="lightboxImg" src="" alt="Gallery preview" />
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+
+      reveals.forEach((item) => {
+        const top = item.getBoundingClientRect().top;
+        const visiblePoint = 100;
+
+        if (top < windowHeight - visiblePoint) {
+          item.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const filterValue = button.getAttribute("data-filter");
+
+        galleryItems.forEach((item) => {
+          const category = item.getAttribute("data-category");
+
+          if (filterValue === "all" || filterValue === category) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+    });
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    galleryItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        lightboxImg.src = img.src;
+        lightbox.classList.add("show");
+      });
+    });
+
+    lightboxClose.addEventListener("click", () => {
+      lightbox.classList.remove("show");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>

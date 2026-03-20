@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Royal Feast Caterers & Events</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #c89b63;
+      --dark: #111827;
+      --dark-light: #1f2937;
+      --cream: #f8f5f0;
+      --white: #ffffff;
+      --text: #4b5563;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+      --transition: all 0.35s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-subtitle {
+      display: inline-block;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--dark);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .primary-btn {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .outline-btn {
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .outline-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* Header */
+    .page-header {
+      min-height: 65vh;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.72)),
+        url("https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      position: relative;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .active-link {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      background: var(--primary);
+      padding: 10px 20px;
+      border-radius: 999px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    .page-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(65vh - 90px);
+      text-align: center;
+    }
+
+    .page-hero-content {
+      max-width: 820px;
+    }
+
+    .page-hero-content h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      margin-bottom: 18px;
+      line-height: 1.15;
+    }
+
+    .page-hero-content p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #f3f4f6;
+      font-size: 1.05rem;
+    }
+
+    /* Intro */
+    .services-intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .services-intro-content p {
+      margin: 18px 0;
+    }
+
+    .services-intro-image img {
+      min-height: 460px;
+      border-radius: var(--radius);
+    }
+
+    /* Main services */
+    .services-main-section {
+      background: var(--cream);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    /* Process */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .process-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px 22px;
+      text-align: center;
+      border-top: 4px solid var(--primary);
+    }
+
+    .process-number {
+      width: 55px;
+      height: 55px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .process-card h3 {
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    /* Packages */
+    .packages-section {
+      background: var(--cream);
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .package-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px 26px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .package-card.featured {
+      border: 2px solid var(--primary);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .package-card h3 {
+      color: var(--dark);
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .package-price {
+      color: var(--primary);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .package-card ul {
+      margin-bottom: 24px;
+    }
+
+    .package-card ul li {
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .package-card ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 1px;
+      color: var(--primary);
+    }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, var(--dark), var(--dark-light));
+      color: var(--white);
+      text-align: center;
+      padding: 60px 30px;
+      border-radius: 24px;
+    }
+
+    .cta-box h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      color: #e5e7eb;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: #d1d5db;
+      padding-top: 70px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 35px;
+      padding-bottom: 40px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      color: var(--white);
+      margin-bottom: 15px;
+    }
+
+    .footer a {
+      color: #d1d5db;
+    }
+
+    .footer li {
+      margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      padding: 18px 0;
+    }
+
+    /* Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .services-intro-grid,
+      .services-grid,
+      .process-grid,
+      .packages-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-intro-image img {
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 260px;
+        background: rgba(17, 24, 39, 0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        border-radius: 16px;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .services-intro-grid,
+      .services-grid,
+      .process-grid,
+      .packages-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        min-height: 55vh;
+      }
+
+      .page-hero {
+        min-height: calc(55vh - 90px);
+      }
+
+      .section-padding {
+        padding: 70px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <nav class="navbar container">
+      <div class="logo">Swaroop</div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Services.html" class="active-link">Services</a></li>
+        <li><a href="Gallery.html">Gallery</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="Contact.html" class="nav-btn">Book Event</a></li>
+      </ul>
+    </nav>
+
+    <section class="page-hero container">
+      <div class="page-hero-content reveal active">
+        <span class="section-subtitle">Our Services</span>
+        <h1>Elegant Catering & Event Solutions for Every Occasion</h1>
+        <p>
+          From weddings and private parties to corporate gatherings and outdoor
+          celebrations, we provide premium catering, refined presentation, and
+          professional event execution.
+        </p>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section-padding">
+      <div class="container services-intro-grid">
+        <div class="services-intro-content reveal">
+          <span class="section-subtitle">What We Offer</span>
+          <h2 class="section-title">Tailored Services Designed Around Your Event</h2>
+          <p>
+            At Swaroop Caterers & Events, we understand that every celebration
+            has its own character and vision. That’s why we offer customized
+            catering and event services that combine delicious cuisine, elegant
+            styling, and reliable coordination.
+          </p>
+          <p>
+            Whether you need a full wedding catering experience, a stylish buffet
+            setup, a private dining arrangement, or corporate event service, our
+            team works closely with you to deliver a smooth and memorable event.
+          </p>
+          <a href="Contact.html" class="btn primary-btn">Book a Consultation</a>
+        </div>
+
+        <div class="services-intro-image reveal">
+          <img
+            src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1000&q=80"
+            alt="Luxury catering setup"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="services-main-section section-padding">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-subtitle">Main Services</span>
+          <h2 class="section-title">Professional Event Catering with a Premium Touch</h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <i class="fa-solid fa-heart"></i>
+            <h3>Wedding Catering</h3>
+            <p>
+              Beautifully curated menus, elegant buffet layouts, and attentive
+              service for unforgettable wedding celebrations.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <i class="fa-solid fa-building"></i>
+            <h3>Corporate Events</h3>
+            <p>
+              Professional food and beverage services for meetings, conferences,
+              launches, and office gatherings.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <i class="fa-solid fa-cake-candles"></i>
+            <h3>Birthday Parties</h3>
+            <p>
+              Customized food menus and stylish service arrangements for joyful
+              private celebrations of every size.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <i class="fa-solid fa-utensils"></i>
+            <h3>Private Dining</h3>
+            <p>
+              Intimate dining experiences with personalized menus, elegant table
+              settings, and refined hospitality.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <i class="fa-solid fa-champagne-glasses"></i>
+            <h3>Event Decoration</h3>
+            <p>
+              Sophisticated décor styling, table arrangements, and presentation
+              details that elevate the atmosphere.
+            </p>
+          </article>
+
+          <article class="service-card reveal">
+            <i class="fa-solid fa-plate-wheat"></i>
+            <h3>Outdoor Catering</h3>
+            <p>
+              Seamless catering setups for gardens, rooftops, destination events,
+              and open-air celebrations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-subtitle">How We Work</span>
+          <h2 class="section-title">Our Simple Event Process</h2>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card reveal">
+            <div class="process-number">01</div>
+            <h3>Consultation</h3>
+            <p>
+              We discuss your event type, guest count, menu ideas, and service expectations.
+            </p>
+          </div>
+
+          <div class="process-card reveal">
+            <div class="process-number">02</div>
+            <h3>Planning</h3>
+            <p>
+              Our team creates a customized service plan, layout, and catering proposal.
+            </p>
+          </div>
+
+          <div class="process-card reveal">
+            <div class="process-number">03</div>
+            <h3>Execution</h3>
+            <p>
+              We prepare, style, and manage the service professionally on your event day.
+            </p>
+          </div>
+
+          <div class="process-card reveal">
+            <div class="process-number">04</div>
+            <h3>Celebration</h3>
+            <p>
+              You enjoy the event while we handle the food, presentation, and guest service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="packages-section section-padding">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-subtitle">Packages</span>
+          <h2 class="section-title">Flexible Options for Different Event Needs</h2>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card reveal">
+            <h3>Silver Package</h3>
+            <div class="package-price">₹25,000</div>
+            <ul>
+              <li>Basic buffet setup</li>
+              <li>Customized menu selection</li>
+              <li>Service staff included</li>
+              <li>Ideal for small gatherings</li>
+            </ul>
+            <a href="#" class="btn outline-btn">Choose Plan</a>
+          </div>
+
+          <div class="package-card featured reveal">
+            <span class="package-badge">Popular</span>
+            <h3>Gold Package</h3>
+            <div class="package-price">₹55,000</div>
+            <ul>
+              <li>Premium buffet presentation</li>
+              <li>Expanded menu options</li>
+              <li>Decoration support</li>
+              <li>Ideal for weddings & events</li>
+            </ul>
+            <a href="#" class="btn primary-btn">Choose Plan</a>
+          </div>
+
+          <div class="package-card reveal">
+            <h3>Platinum Package</h3>
+            <div class="package-price">₹95,000</div>
+            <ul>
+              <li>Luxury full-service catering</li>
+              <li>Custom décor & styling</li>
+              <li>Dedicated event coordination</li>
+              <li>Best for premium celebrations</li>
+            </ul>
+            <a href="#" class="btn outline-btn">Choose Plan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container cta-box reveal">
+        <h2>Let’s Plan a Beautiful Event Together</h2>
+        <p>
+          Contact RoyalFeast today to discuss your event and get a personalized
+          catering quote tailored to your vision and budget.
+        </p>
+        <a href="Contact.html" class="btn primary-btn">Get Free Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Swaroop</h3>
+        <p>
+          Premium catering and event services for weddings, parties, and
+          corporate gatherings.
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="About.html">About</a></li>
+          <li><a href="Services.html">Services</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>Email: info@royalfeast.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Location: Your City, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Swaroop Caterers & Events. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+
+      reveals.forEach((item) => {
+        const top = item.getBoundingClientRect().top;
+        const visiblePoint = 100;
+
+        if (top < windowHeight - visiblePoint) {
+          item.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>
